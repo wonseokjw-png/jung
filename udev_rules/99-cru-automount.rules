@@ -1,0 +1,27 @@
+# ─────────────────────────────────────────────────────────────────
+# /etc/udev/rules.d/99-cru-automount.rules
+# CRU 외장 하드 (SATA/USB 핫스왑) 자동 마운트 규칙
+# 설치: sudo cp 99-cru-automount.rules /etc/udev/rules.d/
+#        sudo udevadm control --reload-rules
+# ─────────────────────────────────────────────────────────────────
+
+# ── USB로 연결된 외장 하드 감지 → 자동 마운트
+ACTION=="add", \
+    SUBSYSTEM=="block", \
+    ENV{DEVTYPE}=="disk", \
+    ENV{ID_BUS}=="usb", \
+    RUN+="/usr/local/bin/auto_mount.sh %k"
+
+# ── SATA 핫플러그 (eSATA / CRU 베이) 감지 → 자동 마운트
+ACTION=="add", \
+    SUBSYSTEM=="block", \
+    ENV{DEVTYPE}=="disk", \
+    ATTR{removable}=="1", \
+    ENV{ID_BUS}!="usb", \
+    RUN+="/usr/local/bin/auto_mount.sh %k"
+
+# ── 디스크 제거 시 언마운트 (안전 제거)
+ACTION=="remove", \
+    SUBSYSTEM=="block", \
+    ENV{DEVTYPE}=="disk", \
+    RUN+="/bin/bash -c 'grep -l %k /proc/mounts | xargs -I{} umount {} 2>/dev/null || true'"

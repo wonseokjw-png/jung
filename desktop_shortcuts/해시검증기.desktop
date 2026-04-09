@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=해시 검증기
+Name[ko]=해시 검증기
+Comment=복사된 디스크/파일 무결성 해시 검증
+Comment[ko]=복사된 디스크/파일 무결성 해시 검증
+Exec=python3 /opt/inspection/hash_checker_gui.py
+Icon=document-properties
+Terminal=false
+Categories=System;Utility;
+StartupNotify=true
+StartupWMClass=hash_checker_gui
