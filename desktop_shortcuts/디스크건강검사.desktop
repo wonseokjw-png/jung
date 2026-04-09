@@ -5,7 +5,7 @@ Name=디스크 건강 검사기
 Name[ko]=디스크 건강 검사기
 Comment=CRU 외장 하드 S.M.A.R.T 건강 상태 검사
 Comment[ko]=CRU 외장 하드 S.M.A.R.T 건강 상태 검사
-Exec=bash -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY python3 /opt/inspection/disk_health_gui.py"
+Exec=python3 /opt/inspection/disk_health_gui.py
 Icon=drive-harddisk
 Terminal=false
 Categories=System;Utility;

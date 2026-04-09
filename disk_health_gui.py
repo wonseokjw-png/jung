@@ -69,8 +69,8 @@ def get_smart(device):
         "power_hours":  None,
         "ssd":          False,
     }
-    raw_info = run_cmd(["smartctl", "-i", f"/dev/{device}"])
-    raw_attr = run_cmd(["smartctl", "-H", "-A", f"/dev/{device}"])
+    raw_info = run_cmd(["sudo", "smartctl", "-i", f"/dev/{device}"])
+    raw_attr = run_cmd(["sudo", "smartctl", "-H", "-A", f"/dev/{device}"])
     combined = raw_info + raw_attr
 
     # 건강 상태
