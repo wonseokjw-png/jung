@@ -360,7 +360,7 @@ class HashCheckerApp:
         self.prog_bar.pack(fill="x")
         self.prog_lbl_var = tk.StringVar(value="대기 중...")
         tk.Label(prog_row, textvariable=self.prog_lbl_var,
-                 bg=BG_DARK, fg=COL_DIM, font=("Ubuntu", 9")).pack(anchor="e")
+                 bg=BG_DARK, fg=COL_DIM, font=("Ubuntu", 9)).pack(anchor="e")
 
         # 결과 테이블
         tbl_frm = tk.Frame(self.root, bg=BG_DARK)
